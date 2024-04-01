@@ -1,5 +1,5 @@
 package com.icia.project.dto;
 
-public class SuccessDto {
+public class CompleteDto {
 
 }

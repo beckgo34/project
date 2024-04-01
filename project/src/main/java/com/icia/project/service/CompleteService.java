@@ -1,5 +1,5 @@
 package com.icia.project.service;
 
-public class SuccessService {
+public class CompleteService {
 
 }

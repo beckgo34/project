@@ -1,5 +1,5 @@
 package com.icia.project.controller;
 
-public class SuccessBoardController {
+public class CompleteBoardController {
 
 }
