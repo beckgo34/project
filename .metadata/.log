@@ -110,3 +110,55 @@ END
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-04-01 08:46:29.629
 !MESSAGE Started org.springframework.tooling.boot.ls LS process 9988
+
+!ENTRY org.eclipse.jface 2 0 2024-04-01 09:08:47.234
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2024-04-01 09:08:47.234
+!MESSAGE A conflict occurred for CTRL+SHIFT+C:
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.tm4e.languageconfiguration.toggleLineCommentCommand,Toggle Line Comment,
+		,
+		Category(org.eclipse.tm4e.languageconfiguration.category,TM4E Language Configuration,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.tm4e.languageconfiguration.toggleLineCommentCommand"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.springframework.tooling.boot.ls.ToggleComment,Toggle Comment,
+		,
+		Category(org.springframework.ide.eclipse.commands,Spring Generic Text Editor,Spring Language Server Commands,true),
+		WorkbenchHandlerServiceHandler("org.springframework.tooling.boot.ls.ToggleComment"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-01 09:10:21.555
+!MESSAGE Classpath changed for project: pj
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-01 09:10:21.556
+!MESSAGE Boot project REMOVED: pj
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2024-04-01 09:10:21.567
+!MESSAGE Failed to refresh Code Minings for editor.
+!STACK 1
+Java Model Exception: Error in Java Model (code 969): pj does not exist
+	at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:549)
+	at org.eclipse.jdt.internal.core.JavaModelManager.getPerProjectInfoCheckExistence(JavaModelManager.java:2576)
+	at org.eclipse.jdt.internal.core.JavaProject.getPerProjectInfo(JavaProject.java:2438)
+	at org.eclipse.jdt.internal.core.JavaProject.getRawClasspath(JavaProject.java:2481)
+	at org.springframework.tooling.ls.eclipse.commons.STS4LanguageClientImpl.lambda$9(STS4LanguageClientImpl.java:428)
+	at org.springframework.tooling.jdt.ls.commons.classpath.ReusableClasspathListenerHandler$CallbackJob.lambda$0(ReusableClasspathListenerHandler.java:76)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.tooling.jdt.ls.commons.classpath.ReusableClasspathListenerHandler$CallbackJob.run(ReusableClasspathListenerHandler.java:76)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2024-04-01 09:10:21.569
+!MESSAGE pj does not exist
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-01 09:10:54.232
+!MESSAGE Classpath changed for project: project
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-01 09:10:54.232
+!MESSAGE Boot project ADDED: project
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-01 09:12:58.721
+!MESSAGE Classpath changed for project: project
