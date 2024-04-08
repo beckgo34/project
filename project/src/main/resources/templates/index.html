@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,11 +13,13 @@
 </head>
 <body>
 	<header>
-	 </header>
-	
-	
-	<footer>
-	
-	</footer>
+		<div class="links">
+			<a th:href="@{loginForm}">Login</a>
+			<a th:href="@{joinForm}">Jogin</a>
+		</div>
+	</header>
+
+
+	<footer> </footer>
 </body>
 </html>

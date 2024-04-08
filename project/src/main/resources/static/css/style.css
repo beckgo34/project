@@ -1,17 +1,38 @@
-/*
-*header
-*/
+/* Header */
 header {
+	height: 58px;
 	background-color: #3470E5;
-	height: 65px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0 20px;
 }
-/*
-*footer
-*/
+
+header .links {
+	display: flex;
+	align-items: center;
+}
+
+header a {
+	color: white;
+	text-decoration: none;
+	margin-right: 15px;
+}
+
+header a:last-child {
+	margin-right: 0;
+}
+
+/* Footer */
 footer {
 	height: 58px;
 	background-color: #3470E5;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+}
+
+/* Body */
+body {
+	margin-bottom: 58px; /* footer 높이만큼 여백 추가 */
 }
