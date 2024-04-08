@@ -1,4 +1,17 @@
+/*
+*header
+*/
 header {
 	background-color: #3470E5;
 	height: 65px;
+}
+/*
+*footer
+*/
+footer {
+	height: 58px;
+	background-color: #3470E5;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
