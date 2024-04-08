@@ -2,6 +2,14 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
+	<!-- header -->
+	<div th:fragment="header" class="header">
+		<div class="links">
+			<a th:href="@{loginForm}">Login</a>
+		    <a th:href="@{joinForm}">Jogin</a>
+		</div>
 
+		<footer> </footer>
+	</div>
 </body>
 </html>
