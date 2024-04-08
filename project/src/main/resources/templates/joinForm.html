@@ -9,44 +9,53 @@
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
+ <script th:inline="javascript">
+        $(function () {
+            let m = [[${msg}]];
+            if(m != null){
+                alert(m);
+            }
+        })
+    </script>
 <title>join</title>
 </head>
 <body>
-	<header> 
-	 <th:block th:insert="~{fragments::header}"/>
+	<header>
+		<th:block th:insert="~{fragments::header}" />
 	</header>
-		<div class="">
-			<form th:action="@{joinProc}" method="post"
-				  class="join-form">
+	<div class="">
+		<form th:action="@{joinProc}" method="post" class="join-form">
 			<div>
 				<label for="exampleInputEmail1" class="form-label mt-4">아이디
-				</label> 
-				<input type="text" class="form-control" id="mid"
-					name="m_id" placeholder="아이디" autofocus>
-				<input type="button" value="중복확인" onclick="idCheck()">
-					
+				</label> <input type="text" class="form-control" id="mid" name="m_id"
+					placeholder="아이디" autofocus> <input type="button"
+					value="중복확인" onclick="idCheck()">
+
 			</div>
 			<div>
 				<label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
 				<input type="password" class="form-control"
-					id="exampleInputPassword1" placeholder="비밀번호"
-					autocomplete="off">
+					id="exampleInputPassword1" placeholder="비밀번호" name="m_password">
 			</div>
 			<div>
-				<label for="exampleInputPassword1" class="form-label mt-4">비밀번호 확인</label>
-				<input type="password" class="form-control"
-					id="exampleInputPassword1" placeholder="비밀번호"
-					autocomplete="off">
+				<label for="exampleInputPassword1" class="form-label mt-4">비밀번호
+					확인</label> <input type="password" class="form-control"
+					id="exampleInputPassword1" placeholder="비밀번호 확인" autocomplete="off">
 			</div>
 			<div>
-				<label for="exampleInputEmail1" class="form-label mt-4">이름
-				</label> 
-				<input type="text" class="form-control" id="mname"
-					name="m_name" placeholder="이름" >
+				<label for="exampleInputEmail1" class="form-label mt-4">이름 </label>
+				<input type="text" class="form-control" id="mname" name="m_name"
+					placeholder="이름">
+			</div>
+			<div>
+				<label for="exampleInputEmail1" class="form-label mt-4">이메일
+				</label> <input type="email" class="form-control"
+					id="exampleInputEmail1" name="m_email"
+					placeholder="이메일">
 			</div>
 			<div>
 				<label for="exampleSelect1" class="form-label mt-4">부서 </label> <select
-					class="form-select" id="exampleSelect1">
+					class="form-select" id="exampleSelect1" name="m_department">
 					<option>인사부</option>
 					<option>회계부</option>
 					<option>기획부</option>
@@ -54,7 +63,7 @@
 				</select>
 			</div>
 			<input type="submit" value="가입">
-			</form>
+		</form>
 	</div>
 	<footer></footer>
 </body>
