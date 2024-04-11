@@ -3,6 +3,7 @@ package com.icia.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.icia.project.dao.MemberDao;
@@ -31,12 +32,12 @@ public class MemberService {
 		
 		try {
 			mDao.InsertMember(mDto);
-			view = "redirect:/";
-			msg = "가입성공";
+			view = "redirect:/loginForm";
+			msg = "가입에 성공하셧습니다.";
 		}catch (Exception e) {
 			e.printStackTrace();
 			view = "redirect:/joinForm";
-			msg = "가입실패";
+			msg = "가입에 실패하셧습니다.";
 			
 		}
 		
@@ -45,6 +46,7 @@ public class MemberService {
 		return view;
 	}
 	
+	@GetMapping("idCheck")
 	public String idCheck(String mid) {
 		log.info("idCheck()");
 		
