@@ -33,4 +33,24 @@ body {
 	margin-bottom: 58px; /* footer 높이만큼 여백 추가 */
 }
 
-  
+.center-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh; /* 뷰포트 높이에 따라 가운데 정렬 */
+}
+
+.form-container {
+	width: 400px; /* 컨테이너 너비 조정 */
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #f8f9fa;
+}
+
+.form-title {
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}

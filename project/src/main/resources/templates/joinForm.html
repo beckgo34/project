@@ -24,47 +24,45 @@
 	<header>
 		<th:block th:insert="~{fragments::header}" />
 	</header>
-	<div class="">
-		<form th:action="@{joinProc}" method="post" class="join-form">
-			<div>
-				<label for="exampleInputEmail1" class="form-label mt-4">아이디
-				</label> <input type="text" class="form-control" id="mid" name="m_id"
-					placeholder="아이디" autofocus>
-					 <input type="button" value="중복확인" onclick="idCheck()">
-			</div>
-			<div>
-				<label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
-				<input type="password" class="form-control"
-					id="exampleInputPassword1" placeholder="비밀번호" name="m_password">
-			</div>
-			<!-- <div>
-				<label for="exampleInputPassword1" class="form-label mt-4">비밀번호
-					확인</label> <input type="password" class="form-control"
-					id="exampleInputPassword1" placeholder="비밀번호 확인" autocomplete="off">
-			</div> -->
-			<div>
-				<label for="exampleInputEmail1" class="form-label mt-4">이름 </label>
-				<input type="text" class="form-control" id="mname" name="m_name"
-					placeholder="이름">
-			</div>
-			<div>
-				<label for="exampleInputEmail1" class="form-label mt-4">이메일
-				</label> <input type="email" class="form-control"
-					id="exampleInputEmail1" name="m_email"
-					placeholder="이메일">
-			</div>
-			<div>
-				<label for="exampleSelect1" class="form-label mt-4">부서 </label> <select
-					class="form-select" id="exampleSelect1" name="m_department">
-					<option>인사부</option>
-					<option>회계부</option>
-					<option>기획부</option>
-					<option>총무부</option>
-				</select>
-			</div>
-			<input type="submit" class="btn btn-primary" value="가입">
-		</form>
-	</div>
+	<body>
+    <div class="center-box">
+        <div class="form-container">
+        	<h2 class="form-title">회원가입</h2>
+            <form th:action="@{joinProc}" method="post" class="join-form">
+                <div class="mb-3">
+                    <label for="mid" class="form-label">아이디</label>
+                    <input type="text" class="form-control" id="mid" name="m_id" placeholder="아이디" autofocus>
+                    <button type="button" class="btn btn-primary mt-2" onclick="idCheck()">중복확인</button>
+                </div>
+                <div class="mb-3">
+                    <label for="m_password" class="form-label">비밀번호</label>
+                    <input type="password" class="form-control" id="m_password" name="m_password" placeholder="비밀번호">
+                </div>
+                <div class="mb-3">
+                    <label for="m_password" class="form-label">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="m_passwordCheck"  placeholder="비밀번호 확인">
+                </div>
+                <div class="mb-3">
+                    <label for="m_name" class="form-label">이름</label>
+                    <input type="text" class="form-control" id="m_name" name="m_name" placeholder="이름">
+                </div>
+                <div class="mb-3">
+                    <label for="m_email" class="form-label">이메일</label>
+                    <input type="email" class="form-control" id="m_email" name="m_email" placeholder="이메일">
+                </div>
+                <div class="mb-3">
+                    <label for="m_department" class="form-label">부서</label>
+                    <select class="form-select" id="m_department" name="m_department">
+                        <option>인사부</option>
+                        <option>회계부</option>
+                        <option>기획부</option>
+                        <option>총무부</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">가입</button>
+            </form>
+        </div>
+    </div>
 	<footer></footer>
 </body>
 <script th:inline="javascript">
