@@ -10,4 +10,6 @@ public interface MemberDao {
 	// 회원가입 메소드
 	void InsertMember(MemberDto mDto);
 
+	int selectId(String mid);
+
 }

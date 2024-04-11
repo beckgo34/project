@@ -9,6 +9,7 @@
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/jquery-3.7.1.min.js"></script>
  <script th:inline="javascript">
         $(function () {
             let m = [[${msg}]];
@@ -28,20 +29,19 @@
 			<div>
 				<label for="exampleInputEmail1" class="form-label mt-4">아이디
 				</label> <input type="text" class="form-control" id="mid" name="m_id"
-					placeholder="아이디" autofocus> <input type="button"
-					value="중복확인" onclick="idCheck()">
-
+					placeholder="아이디" autofocus>
+					 <input type="button" value="중복확인" onclick="idCheck()">
 			</div>
 			<div>
 				<label for="exampleInputPassword1" class="form-label mt-4">비밀번호</label>
 				<input type="password" class="form-control"
 					id="exampleInputPassword1" placeholder="비밀번호" name="m_password">
 			</div>
-			<div>
+			<!-- <div>
 				<label for="exampleInputPassword1" class="form-label mt-4">비밀번호
 					확인</label> <input type="password" class="form-control"
 					id="exampleInputPassword1" placeholder="비밀번호 확인" autocomplete="off">
-			</div>
+			</div> -->
 			<div>
 				<label for="exampleInputEmail1" class="form-label mt-4">이름 </label>
 				<input type="text" class="form-control" id="mname" name="m_name"
@@ -62,9 +62,72 @@
 					<option>총무부</option>
 				</select>
 			</div>
-			<input type="submit" value="가입">
+			<input type="submit" class="btn btn-primary" value="가입">
 		</form>
 	</div>
 	<footer></footer>
 </body>
+<script th:inline="javascript">
+	// id 중복 체크
+	let ck = false;
+	
+	function idcheck(){
+		let id = $("#mid").val();
+		if(id == ""){
+			alert("아이디를 입력하세요.");
+			$("#mid").focus();
+			return;// 여기서 함수 종료.
+		}
+		
+		// 전송 데이터 형식에 맞게 object로 작성
+		let sendObject = {"mid" : id}; // "test01" -> {"mid" : "test01"}
+		
+		// ajax로 전송 및 결과 받아서처리
+		$.ajax({
+			url: "idCheck",
+			type: "get",
+			data: sendObject,
+			success: (res) => {
+				console.log(res);
+				if(res == "ok"){
+					alert("사용 가능한 아이디입니다.");
+					ck = true;
+				}else{
+					alert("중복된 아이디입니다.");
+					ck = false;
+					$("#mid").val(""); // 아이디 지우기
+					$("#mid").focus();
+				}
+			},
+			error: (err) => {
+				console.log(err);
+				ck = false;
+			}
+		});
+		
+	}
+	
+	function check(){
+		// id 중복체크 여부 확인
+		if(ck == false){
+			alert("아이디 중복 확인을 해주세요");
+			return false;
+		}
+		
+		// form 태그의 내용 가져오기
+		const jfrm = document.jForm;
+		console.log(jfrm);
+		
+		let length = jfrm.length - 1;
+		for(let i = 0; i < length; i++){
+			if(jfrm[i].value == "" || jfrm[i] == null){
+				alert(`${jfrm[i].title} 입력!`);
+				jfrm[i].focus();
+				return false;
+			}	
+		}
+		
+		return true;
+	}
+	</script>
 </html>
