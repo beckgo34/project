@@ -6,9 +6,19 @@
 		INSERT INTO member 
 		VALUES(#{m_id}, #{m_password}, #{m_name}, #{m_department}, #{m_email})
 	</insert>
+	
 	<select id="selectId" parameterType="String" 
  		resultType="Integer">
  		SELECT count(*) FROM member WHERE m_id = #{mid}	
  	</select>
 	
+	<select id="selectPassword" parameterType="String"
+		resultType="String">
+		SELECT m_password FROM member WHERE m_id=#{m_id}		
+	</select>
+	
+	<select id="selectMember" parameterType="String"
+		resultType="MemberDto">
+		SELECT * FROM member WHERE m_id=#{m_id}
+		</select>
 </mapper>

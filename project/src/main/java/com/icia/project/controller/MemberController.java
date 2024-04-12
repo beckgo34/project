@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.icia.project.dto.MemberDto;
 import com.icia.project.service.MemberService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -23,6 +24,15 @@ public class MemberController {
 	public String loginForm() {
 		log.info("loginForm()");
 		return "loginForm";
+	}
+	
+	@PostMapping("loginProc")
+	public String loginProc(MemberDto mDto,
+							HttpSession session,
+							RedirectAttributes rttr) {
+		log.info("loginProc()");
+		
+		return mser.loginProc(mDto, session, rttr);
 	}
 	
 	@GetMapping("joinForm")
@@ -40,6 +50,10 @@ public class MemberController {
 		
 		return view;
 	}
+	
+	
+	
+	
 	
 	
 }

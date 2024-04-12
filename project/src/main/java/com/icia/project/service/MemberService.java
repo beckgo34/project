@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.icia.project.dao.MemberDao;
 import com.icia.project.dto.MemberDto;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -62,4 +64,36 @@ public class MemberService {
 		
 		return result;
 	}
-}
+	
+	public String loginProc(MemberDto mDto, 
+							HttpSession session, 
+							RedirectAttributes rttr) {
+		log.info("loginProc()");
+		
+		String view = null;
+		String msg = null;
+		
+		String encPwd = mDao.selectPassword(mDto.getM_id());
+		
+		if(encPwd != null) {
+		if(pEncoder.matches(mDto.getM_password(), encPwd)) {
+			mDto = mDao.selectMember(mDto.getM_id());
+			session.setAttribute("mDto", mDto);
+			log.info("session: {}", session);
+			log.info("mDto: {}",mDto);
+			view = "redirect:/";
+			msg = "로그인 성공";
+		}else {
+			msg = "비밀번호가 틀립니다";
+			view = "redirect:loginForm";
+		}
+		}else {
+			msg = "존재하지 않는 아이디입니다";
+			view = "redirect:loginForm";
+		}
+		
+		rttr.addFlashAttribute("msg", msg);
+		
+		return view;
+	}
+} // class end

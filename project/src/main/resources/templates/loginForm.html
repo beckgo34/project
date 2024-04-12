@@ -8,15 +8,41 @@
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
+<script src="js/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <title>Insert title here</title>
+<script th:inline="javascript">
+        $(function () {
+            let m = [[${msg}]];
+            if(m != null){
+                alert(m);
+            }
+        })
+    </script>
 </head>
 <body>
 	<header>
 		<th:block th:insert="~{fragments::header}" />
 	</header>
-		dkdkk
-	<footer>
-	</footer>
+<body>
+	<div class="center-box">
+		<div class="form-container">
+			<h2 class="form-title">회원가입</h2>
+			<form th:action="@{loginProc}" method="post" class="join-form">
+				<div class="mb-3">
+					<label for="mid" class="form-label">아이디</label> <input type="text"
+						class="form-control" id="mid" name="m_id" placeholder="아이디"
+						autofocus>
+				</div>
+				<div class="mb-3">
+					<label for="m_password" class="form-label">비밀번호</label> <input
+						type="password" class="form-control" id="m_password"
+						name="m_password" placeholder="비밀번호">
+				</div>
+				<input type="submit" class="btn btn-primary" value="로그인">
+			</form>
+		</div>
+	</div>
+	<footer> </footer>
 </body>
 </html>

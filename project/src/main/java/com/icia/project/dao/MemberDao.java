@@ -9,7 +9,11 @@ public interface MemberDao {
 
 	// 회원가입 메소드
 	void InsertMember(MemberDto mDto);
-
+	// 아이디 중봊ㄱ
 	int selectId(String mid);
+	
+	String selectPassword(String m_id);
+	// 로그인
+	MemberDto selectMember(String m_id);
 
 }
