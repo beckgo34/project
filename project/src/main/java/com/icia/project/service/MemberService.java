@@ -96,4 +96,13 @@ public class MemberService {
 		
 		return view;
 	}
+
+	public String logout(HttpSession session, 
+						 RedirectAttributes rttr) {
+		log.info("logout()");
+		
+		rttr.addAttribute("msg", "로그아웃되었습니다");
+		session.invalidate();
+		return "redirect:/";
+	}
 } // class end

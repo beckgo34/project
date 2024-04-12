@@ -51,9 +51,17 @@ public class MemberController {
 		return view;
 	}
 	
+	@GetMapping("logout")
+	public String logout(HttpSession session,
+						 RedirectAttributes rttr) {
+		log.info("logout()");
+		
+		String view = mser.logout(session, rttr);
+		
+		return view;
+	}
 	
 	
 	
 	
-	
-}
+} //class end
