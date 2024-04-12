@@ -93,6 +93,7 @@ public class MemberService {
 		}
 		
 		rttr.addFlashAttribute("msg", msg);
+		log.info("msg: {}", msg);
 		
 		return view;
 	}
