@@ -61,7 +61,16 @@ public class MemberController {
 		return view;
 	}
 	
+	@GetMapping("requestsBoard")
+	public String requestsBoard() {
+		
+		return "requestsBoard";
+	}
 	
-	
+	@GetMapping("successBoard")
+	public String successBoard() {
+		
+		return "successBoard";
+	}
 	
 } //class end
