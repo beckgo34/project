@@ -84,8 +84,16 @@ body {
 	justify-content: center; /* 버튼을 수평 중앙으로 정렬 */
 	align-items: center; /* 버튼을 수직 중앙으로 정렬 */
 	height: 100vh; /* 버튼 컨테이너를 화면 전체 높이로 설정 */
+	margin-top: 20px; /* 상단 여백 설정 */
 }
 /* 버튼 스타일 */
 .button-container button {
-	margin: 0 10px; /* 버튼 사이 간격 조정 */
+	margin: 0 10px; /* 버튼 사이의 좌우 간격 조정 */
+	width: 200px; /* 버튼 너비 설정 */
 }
+
+.button-container button+button {
+	margin-left: 500px; /* 첫 번째 버튼과 두 번째 버튼 사이의 간격 조절 */
+}
+
+   

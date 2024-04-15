@@ -1,0 +1,60 @@
+use project_db;
+
+drop table member;
+create table member(
+	m_id varchar(20),
+    m_password varchar(100) not null,
+    m_name varchar(10) not null,
+    m_department varchar(5) not null,
+    m_email varchar(30) not null,
+    constraint pk_m_id primary key (m_id)
+);
+
+drop table member_requests;
+create table member_requests(
+	mr_id varchar(20),
+    mr_password varchar(100) not null,
+    mr_name varchar(10) not null,
+    mr_department varchar(5) not null,
+    mr_email varchar(30) not null,
+    constraint pk_mr_id primary key (mr_id)
+);
+
+drop table member_admin;
+create table member_admin(
+	ma_id varchar(20),
+    ma_password varchar(100),
+    constraint pk_ma_id primary key (ma_id)
+);
+
+insert into member_admin values('admin', '1234');
+select * from member_admin;
+
+drop table requestsboard;
+create table requestsboard(
+	    r_num bigint auto_increment,
+	    r_title varchar(40) not null,
+	    r_contents varchar(2000) not null,
+	    r_progress tinyint default 0 not null,
+	    r_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+	    rm_name varchar(10) not null,
+        m_id varchar(20) not null,
+        constraint pk_r_num primary key (r_num),
+        constraint fk_m_id foreign key (m_id) references member (m_id)
+);
+drop table successboard;
+create table successboard(
+		s_num bigint auto_increment,
+	    s_title varchar(40) not null,
+	    s_contents varchar(2000) not null,
+	    ms_name varchar(10) not null,
+	    s_progress tinyint default 0 not null,
+	    s_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+	    rs_num bigint,
+        ms_id varchar(20) not null,
+		constraint pk_s_num primary key (s_num),
+        constraint fk_rs_num foreign key (rs_num) references requestsboard (r_num),
+        constraint fk_ms_id foreign key (ms_id) references member (m_id)
+);
+
+select * from member;
