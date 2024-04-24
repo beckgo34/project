@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.icia.project.dao.RequestsBoardDao">
+	<select id="selectreBoard" parameterType="SearchDto"
+		resultType="RequestsBoardDto">
+		SELECT * FROM requestsboard
+		ORDER BY r_num DESC 
+		LIMIT 10;
+	</select>
+</mapper>			

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<html>
 <head>
 <meta charset="UTF-8">
 <link
@@ -13,9 +12,33 @@
 </head>
 <body>
 	<header>
-		<th:block th:insert="~{fragments::header}" />
+		<th:block th:insert="~{fragments::header}" />		
 	</header>
-	
+		
+		<section>
+			<select>
+				<option value="requests-name">이름순</option>
+				<option value="requests-title">제목순</option>
+			</select>
+		</section>
+		<section>
+			<div class="data-show">
+				<th:block th:if="${#lists.isEmpty(reLists)}">
+					<div style="width: 100%">게시글이 없습니다</div>
+				</th:block>
+				<th:block th:unless="${#lists.isEmpty(reLists)}">
+					<th:block th:each="reitem:${reLists}">
+						<div th:text="${reitem.r_num}"></div>
+						<div>
+							<a th:href="@{boardDetail(r_num=${reitem.r_num})}" th:text="${reitem.r_title}"></a>
+						</div>
+						<div th:text="${reitem.m_id}"></div>
+					</th:block>
+				</th:block>
+			</div>	
+		
+		</section>	
+		
 	<footer></footer>
 </body>
 </html>
