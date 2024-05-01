@@ -75,7 +75,7 @@ body {
 .page-container {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh; /* 최소 높이 지정으로 푸터가 항상 아래에 고정됨 */
+	height: 100vh; /* 최소 높이 지정으로 푸터가 항상 아래에 고정됨 */
 	justify-content: space-between; /* 컨테이너 내 요소들을 위아래에 균등하게 배치 */
 }
 /* 버튼 컨테이너 스타일 */
@@ -96,4 +96,105 @@ body {
 	margin-left: 500px; /* 첫 번째 버튼과 두 번째 버튼 사이의 간격 조절 */
 }
 
-   
+body {
+  padding: 1.5em;
+  background: #f5f5f5;
+}
+
+table {
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: auto; /* 가로 너비를 자동으로 조정하도록 변경 */
+  max-width: 100%; /* 최대 너비를 화면 너비에 맞추도록 설정 */
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: auto; /* 가로로 넘칠 때 스크롤바 표시 */
+}
+
+
+
+body {
+    font-family: Arial, sans-serif; /* 기본 글꼴 설정 */
+    margin: 0; /* 바디의 기본 마진을 제거합니다. */
+    padding: 0; /* 바디의 기본 패딩을 제거합니다. */
+    background-color: #f5f5f5; /* 배경색 설정 */
+}
+
+/* Header */
+header {
+    height: 50px;
+    background-color: #3470E5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px; /* 링크 간격을 설정합니다. */
+}
+
+/* Footer */
+footer {
+    height: 50px;
+    background-color: #3470E5;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Section */
+section {
+    padding: 20px;
+}
+
+/* Select Box */
+section select {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header a {
+        margin-left: 10px; /* 작은 화면에서 링크 간격을 줄입니다. */
+    }
+}
+/* 데이터 표시 부분 스타일 */
+.data-show {
+  margin-top: 1em;
+}
+
+.data-show .re-num,
+.data-show .re-title,
+.data-show .re-name,
+.data-show .re-progress,
+.data-show .re-date {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+/* 데이터 표시 행 스타일 */
+.data-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5em;
+}
+
+.data-row div {
+  flex: 1;
+}
+
+.data-row div:not(:last-child) {
+  margin-right: 1em;
+}

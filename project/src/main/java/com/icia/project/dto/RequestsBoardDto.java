@@ -11,8 +11,8 @@ public class RequestsBoardDto {
 	private Long r_num;
 	private String r_title;
 	private String r_contents;
-	private int progress;
+	private int r_progress;
 	private Timestamp r_date;
-	private String rm_name;
+	private String mr_name;
 	private String m_id;
 }

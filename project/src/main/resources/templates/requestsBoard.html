@@ -21,24 +21,36 @@
 				<option value="requests-title">제목순</option>
 			</select>
 		</section>
-		<section>
-			<div class="data-show">
-				<th:block th:if="${#lists.isEmpty(reLists)}">
-					<div style="width: 100%">게시글이 없습니다</div>
-				</th:block>
-				<th:block th:unless="${#lists.isEmpty(reLists)}">
-					<th:block th:each="reitem:${reLists}">
-						<div th:text="${reitem.r_num}"></div>
-						<div>
-							<a th:href="@{boardDetail(r_num=${reitem.r_num})}" th:text="${reitem.r_title}"></a>
-						</div>
-						<div th:text="${reitem.m_id}"></div>
-					</th:block>
-				</th:block>
-			</div>	
-		
-		</section>	
-		
+	<table class="table caption-top">
+  <thead>
+    <tr>
+      <th scope="col">글번호</th>
+      <th scope="col">제목</th>
+      <th scope="col">작성자</th>
+      <th scope="col">진행상황</th>
+      <th scope="col">날짜</th>
+    </tr>
+  </thead>
+  <tbody>
+    <th:block th:if="${#lists.isEmpty(reLists)}">
+      <tr>
+        <td colspan="5">게시글이 없습니다</td>
+      </tr>
+    </th:block>
+    <th:block th:unless="${#lists.isEmpty(reLists)}">
+      <th:block th:each="reitem, iterStat : ${reLists}">
+        <tr>
+          <td th:text="${reitem.r_num}"></td>
+          <td><a th:href="@{reBoardDetail(r_num=${reitem.r_num})}" th:text="${reitem.r_title}"></a></td>
+          <td th:text="${reitem.mr_name}"></td>
+          <td th:text="${reitem.r_progress}"></td>
+          <td th:text="${#dates.format(reitem.r_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>
+      </th:block>
+    </th:block>
+  </tbody>
+</table>	
+		<button class="re-write">요청작성</button>
 	<footer></footer>
 </body>
 </html>
