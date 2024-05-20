@@ -8,4 +8,20 @@
 		ORDER BY r_num DESC 
 		LIMIT 10;
 	</select>
+	
+	<select id="selectBoardCnt" parameterType="SearchDto"
+		resultType="Integer">
+		SELECT count(*) FROM requestsboard
+		<if test="colname != null and colname !=''">
+			WHERE ${colname} LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		</select>
+		
+	<insert id="insertRequests" parameterType="RequestsBoardDto"
+		useGeneratedKeys="true" keyProperty="r_num">
+		<selectKey keyProperty="r_num" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO requestsboard VALUES(NULL, #(r_title), #(r_contents), default, default)
+		</insert>	
 </mapper>			

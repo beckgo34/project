@@ -12,45 +12,70 @@
 </head>
 <body>
 	<header>
-		<th:block th:insert="~{fragments::header}" />		
+		<th:block th:insert="~{fragments::header}" />
 	</header>
-		
-		<section>
-			<select>
-				<option value="requests-name">이름순</option>
-				<option value="requests-title">제목순</option>
-			</select>
-		</section>
+	<section>
+		<select>
+			<option class="request" value="requests-name">요청</option>
+			<option class="progress" value="requests-title">진행</option>
+		</select>
+	</section>
 	<table class="table caption-top">
-  <thead>
-    <tr>
-      <th scope="col">글번호</th>
-      <th scope="col">제목</th>
-      <th scope="col">작성자</th>
-      <th scope="col">진행상황</th>
-      <th scope="col">날짜</th>
-    </tr>
-  </thead>
-  <tbody>
-    <th:block th:if="${#lists.isEmpty(reLists)}">
-      <tr>
-        <td colspan="5">게시글이 없습니다</td>
-      </tr>
-    </th:block>
-    <th:block th:unless="${#lists.isEmpty(reLists)}">
-      <th:block th:each="reitem, iterStat : ${reLists}">
-        <tr>
-          <td th:text="${reitem.r_num}"></td>
-          <td><a th:href="@{reBoardDetail(r_num=${reitem.r_num})}" th:text="${reitem.r_title}"></a></td>
-          <td th:text="${reitem.mr_name}"></td>
-          <td th:text="${reitem.r_progress}"></td>
-          <td th:text="${#dates.format(reitem.r_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
-        </tr>
-      </th:block>
-    </th:block>
-  </tbody>
-</table>	
-		<button class="re-write">요청작성</button>
+		<thead>
+			<tr>
+				<th scope="col">글번호</th>
+				<th scope="col">제목</th>
+				<th scope="col">작성자</th>
+				<th scope="col">진행상황</th>
+				<th scope="col">날짜</th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:if="${#lists.isEmpty(reLists)}">
+				<tr>
+					<td colspan="5">게시글이 없습니다</td>
+				</tr>
+			</th:block>
+			<button id="re-write">요청작성</button>
+			<th:block th:unless="${#lists.isEmpty(reLists)}">
+				<th:block th:each="reitem, iterStat : ${reLists}">
+					<tr>
+						<td th:text="${reitem.r_num}"></td>
+						<td><a th:href="@{reBoardDetail(r_num=${reitem.r_num})}"
+							th:text="${reitem.r_title}"></a></td>
+						<td th:text="${reitem.mr_name}"></td>
+						<td th:text="${reitem.r_progress}"></td>
+						<td
+							th:text="${#dates.format(reitem.r_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+					</tr>
+				</th:block>
+
+			</th:block>
+		</tbody>
+
+	</table>
+	<div class="search-area">
+		<select id="sel">
+			<option value="b_title" selected>제목</option>
+			<option value="b_contents" selected>내용</option>
+		</select> <input type="text" id="keyword">
+		<button id="search">검색</button>
+	</div>
+	<div class="paging" th:utext="${paging}"></div>
+
 	<footer></footer>
 </body>
+<script th:inline="javascript">
+	$("#search").click(function() {
+		let keyword = $("#keyword").val;
+		if (keyword == "") {
+			alet("검색어를 입력하세요");
+			return;
+		}
+	});
+
+	$("#re-write").click(function(){
+		location.href = "/writeForm";
+	});
+</script>
 </html>

@@ -22,6 +22,7 @@ public class MemberService {
 	// 비밀번호 암호화
 	private BCryptPasswordEncoder pEncoder = new BCryptPasswordEncoder();
 	
+	
 	public String memberJoin(MemberDto mDto, 
 							 RedirectAttributes rttr) {
 		log.info("memberJoin()");
@@ -79,6 +80,7 @@ public class MemberService {
 		if(pEncoder.matches(mDto.getM_password(), encPwd)) {
 			mDto = mDao.selectMember(mDto.getM_id());
 			session.setAttribute("mDto", mDto);
+			session.setAttribute("isLoggedIn", true);
 			log.info("session: {}", session);
 			log.info("mDto: {}",mDto);
 			view = "redirect:/";
